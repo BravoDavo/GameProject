@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+        #buttons {
+            position: absolute;
+            top: 3px;
+            left: 10px;
+        }
+        #buttons > input {
+            padding: 10px;
+            display: block;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id = "my_canvas" width = "1200"  height = "1200" ></canvas>
+    <div id = "buttons">
+        <input type="button" id="clear" value="">
+        <input type="button" id="clear1" value="">
+        <input type="button" id="clear2" value="">
+    </div>
+    <script>
+        var canvas = document.getElementById("my_canvas");
+        var context= canvas.getContext("2d");
+        var img = null;
+
+        cannon = function() {
+            var centerX = canvas.width / 2;
+            var centerY = canvas.height / 2;
+            var radius = 10;
+            context.beginPath();
+            context.arc(200,385 , radius, 0, 2 * Math.PI, false);
+            context.fillStyle = 'black';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = 'darkgray';
+            context.stroke();
+        };
+
+        onImageLoad = function(){
+            context.drawImage(img, 0, 400, 200 , 200);
+
+        };
+       setup= function(){
+           img = new Image();
+           img.onload = onImageLoad;
+           img.src = "canon-game.jpg";
+       };
+
+
+
+        setup();
+        cannon();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,183 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(to bottom right, white, #bcbdc4);
+
+    }
+
+    #body{
+
+      width:960px;
+      padding:10px;
+      margin:0 auto;
+      clear:both;
+    }
+
+
+    .clear{
+      clear:both;
+    }
+
+
+
+    h1, ul{
+      margin:0;
+      padding:0;
+    }
+
+    #header{
+      margin-bottom:10px;
+    }
+
+    #menu ul{
+
+      list-style:none;
+      height:30px;
+      border-bottom:1px solid #000;
+
+    }
+
+    #menu ul li{
+      float:left;/* all list set in line left */
+
+    }
+
+    #menu ul li a{
+
+      display:block;
+      color:#000; /* list colour black*/
+      text-decoration:none; /* no underline list name*/
+      padding:0px 20px; /*0 padding up and down and 20px padding left and right*/
+      line-height=30px;
+    }
+
+    #menu ul li a:hover, #menu ul li a.selected{
+      background:#000;
+      color:#fff;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+
+    }
+
+
+
+    #content{
+      background:white;
+      width:680px;
+      float:left;
+      padding:10px;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+
+    }
+    #content h1{
+      font-size:x-large;
+    }
+    #side{
+      /*background:green;*/
+      width:239px;
+      float:right;
+      padding:10px;
+      border-left:1px solid #aaa;
+      min-height:450px; /*height for some kind of text may b*/
+
+    }
+    #footer{
+      background:#000;
+      color:#fff;
+    }
+
+
+    @media screen and (max-width:959px) {
+      #body{
+        width:90%;
+        font-size:95%;
+      }
+
+      #menu ul{
+        padding-left:0;
+      }
+
+      #menu ul li{
+        width:100%;
+        text-align:center;
+      }
+
+      #content{
+        width:100%;
+        float:left;
+        margin-top:2%;
+      }
+
+    /* side*/
+  </style>
+</head>
+
+<body>
+<div id="body">
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+  <div id="header">
+    <div id="logo">
+      <h1>BATTLE FIELD</h1>
+    </div>
+  </div>
+
+  <div id="menu">
+    <ul>
+      <li><a href="#" class="selected"> Home </a></li>
+
+      <li><a href="#" > How to play</a></li>
+
+      <li><a href="#"> Contact us </a></li>
+
+      <li><a href="#"> Tell a friend</a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+
+  <div id="main"></div>
+  <div id="content">
+    <h1> About Battle ship</h1>
+    <p> Battleship is a very popular battle game, played all over the world in different forms and with different rules.
+      The original battleship game was played with paper and pencil, invented by Clifford Von Wickler before World War I. Back then,
+      the game was not called Battleship but Salvo. <p><p>While people still play this battle game with a paper and pencil,
+      it is also played as a board game, a video game, a computer game and an online game. Because of its simplicity,
+      Battleship is a great game for children of all ages. Playing the game with a computer-controlled opponent allows
+      children to make mistakes while learning how to play the game. After the child is confident enough to play against
+      siblings or adults, the entire family can have fun playing the game together and benefit from family time.</p>
+  </div>
+
+
+  <div id="side">
+    <h1>Login for Game </h1>
+    <form method="post" action="/welcome">
+      <p><input type="text" name="username" value="" placeholder="Username or Email"></p>
+      <p><input type="password" name="password" value="" placeholder="Password"></p>
+      <p class="remember_me">
+        <label>
+          <input type="checkbox" name="remember_me" id="remember_me">
+          Remember me on this computer
+        </label>
+      </p>
+      <p class="submit"><input type="submit" name="commit" value="Signin"></p>
+      <a href="/signup">Signup Here</a>
+    </form>
+  </div>
+
+</div>
+<div class="clear"></div>
+<hr>
+<div id="footer">Footer </div>
+</div>
+</body>
+</html>

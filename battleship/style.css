@@ -1,0 +1,112 @@
+body {
+    background: linear-gradient(to bottom right, white, #bcbdc4);
+	
+}
+
+#body{
+	
+	width:960px;
+	padding:10px;
+	margin:0 auto;
+	clear:both;
+	}
+	
+
+.clear{
+clear:both;
+}
+
+
+	
+h1, ul{
+	margin:0;
+	padding:0;
+	}
+	
+#header{
+	margin-bottom:10px;
+	}
+	
+#menu ul{
+	
+	list-style:none;
+	height:30px;
+	border-bottom:1px solid #000;
+
+}
+
+#menu ul li{
+	float:left;/* all list set in line left */
+	 
+}
+
+#menu ul li a{
+	
+	display:block;
+	color:#000; /* list colour black*/
+	text-decoration:none; /* no underline list name*/
+	padding:0px 20px; /*0 padding up and down and 20px padding left and right*/
+	line-height=30px;
+}
+
+#menu ul li a:hover, #menu ul li a.selected{
+	background:#000;
+	color:#fff;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	
+}
+
+
+
+#content{
+	background:white;
+	width:680px;
+	float:left;
+	padding:10px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	
+}
+#content h1{
+font-size:x-large;
+}
+#side{
+	/*background:green;*/
+	width:239px;
+	float:right;
+	padding:10px;
+	border-left:1px solid #aaa;
+	min-height:450px; /*height for some kind of text may b*/
+
+}
+#footer{
+	background:#000;
+	color:#fff;
+	}
+
+
+@media screen and (max-width:959px) {
+	#body{
+        width:90%;
+		font-size:95%;
+    }
+	
+	#menu ul{
+	padding-left:0;
+	}
+
+	#menu ul li{
+	width:100%;
+	text-align:center;
+	}
+	
+	#content{
+	width:100%;
+	float:left;
+	margin-top:2%;
+	}
+	
+	/* side*/

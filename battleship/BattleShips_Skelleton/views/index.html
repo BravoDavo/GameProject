@@ -1,0 +1,431 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="javascript/Client_UIController.js"></script>
+    <script src="javascript/Client_Com.js"></script>
+    <script src="javascript/Client_GameController.js"></script>
+
+</head>
+<body>
+<h1>Game</h1>
+<h2 id="subtitle">please place your ships on the upper gamefield (click on a square activates it)</h2>
+<div id="status">Status: </div>
+<div id="GameField">
+    <table id="GameFieldShipsTable" class="GameField">
+        <tr>
+            <td  id="11" onclick="ms(id)"></td><td id="12" onclick="ms(id)"></td><td id="13" onclick="ms(id)"></td>
+        </tr>
+        <tr>
+            <td id="21" onclick="ms(id)"></td><td id="22" onclick="ms(id)"></td><td id="23" onclick="ms(id)"></td>
+        </tr>
+        <tr>
+            <td id="31" onclick="ms(id)"></td><td id="32" onclick="ms(id)"></td><td id="33" onclick="ms(id)"></td>
+        </tr>
+
+    </table>
+    <hr>
+    <table id="GameFieldAttacTable" class="GameField">
+        <tr>
+            <td  id="a11" onclick="as(id)"></td><td id="a12" onclick="as(id)"></td><td id=a"13" onclick="as(id)"></td>
+        </tr>
+        <tr>
+            <td id="a21" onclick="as(id)"></td><td id="a22" onclick="as(id)"></td><td id="a23" onclick="as(id)"></td>
+        </tr>
+        <tr>
+            <td id=a"31" onclick="as(id)"></td><td id="a32" onclick="as(id)"></td><td id="a33" onclick="as(id)"></td>
+        </tr>
+
+    </table>
+</div>
+
+
+
+
+<br><br>
+<a href="#" onclick="ContinueClicked()">continue</a>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<link href="style.css" type="text/css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="javascript/Client_UIController.js"></script>
+    <script src="javascript/Client_Com.js"></script>
+    <script src="javascript/Client_GameController.js"></script>
+    <!--    <script>
+            var socket  = io.connect();
+            var mode = "setMode";
+            var shipCounter = 0;
+            //var shipAlignment = "horizontal";
+            function clickBox(boxId)
+            {
+                var id = boxId;
+                if (mode == "setMode")
+                {
+                    if(shipCounter < 3)
+                    {
+                        shipCounter++;
+                        //document.getElementById(id).innerHTML+="abc";
+                        document.getElementById(id).style.backgroundColor="red";
+                    }
+                }
+                else if (mode == "playMode")
+                {
+
+                }
+            }
+
+            function ready()
+            {
+                if (mode == "playMode")
+                {
+                    //check if ship is hit
+                }
+                mode = "playMode";
+            }
+            /*        socket.on('connect', function(data){
+             document.getElementById("status").innerHTML="Status: Websocket connected.";
+             })
+             socket.on('message', function(data){
+             document.getElementById("messagebox").innerHTML=data.message;
+             })
+             socket.on('broadcast', function(data){
+             document.getElementById("broadcastbox").innerHTML=data.message;
+             })
+             socket.on('time', function(data){
+             document.getElementById("timebox").innerHTML=data.message;
+             })*/
+
+
+        </script>-->
+
+</head>
+<body>
+<h1>Game</h1>
+<h2 id="subtitle">please place your ships on the upper gamefield (click on a square activates it)</h2>
+<div id="status">Status: </div>
+<div id="GameField">
+    <table id="GameFieldShipsTable" border="0">
+        <tbody>
+        <tr>
+            <th>Enemy's Board</th>
+            <th>Your Board</th>
+        </tr>
+        <tr>
+            <td align="center">
+                <table border="1" cellpadding="1" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td> </td>
+                        <td align="center" style="width:15px">A</td>
+                        <td align="center" style="width:15px">B</td>
+                        <td align="center" style="width:15px">C</td>
+                        <td align="center" style="width:15px">D</td>
+                        <td align="center" style="width:15px">E</td>
+                        <td align="center" style="width:15px">F</td>
+                        <td align="center" style="width:15px">G</td>
+                        <td align="center" style="width:15px">H</td>
+                        <td align="center" style="width:15px">I</td>
+                        <td align="center" style="width:15px">J</td>
+                    </tr>
+                    <tr>
+                        <td align="center">1</td>
+                        <td id="A1" onclick="ms(id)"> </td>
+                        <td id="B1" onclick="ms(id)"> </td>
+                        <td id="C1" onclick="ms(id)"> </td>
+                        <td id="D1" onclick="ms(id)"> </td>
+                        <td id="E1" onclick="ms(id)"> </td>
+                        <td id="F1" onclick="ms(id)"> </td>
+                        <td id="G1" onclick="ms(id)"> </td>
+                        <td id="H1" onclick="ms(id)"> </td>
+                        <td id="I1" onclick="ms(id)"> </td>
+                        <td id="J1" onclick="ms(id)"> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">2</td>
+                        <td id="A2" onclick="ms(id)"> </td>
+                        <td id="B2" onclick="ms(id)"> </td>
+                        <td id="C2" onclick="ms(id)"> </td>
+                        <td id="D2" onclick="ms(id)"> </td>
+                        <td id="E2" onclick="ms(id)"> </td>
+                        <td id="F2" onclick="ms(id)"> </td>
+                        <td id="G2" onclick="ms(id)"> </td>
+                        <td id="H2" onclick="ms(id)"> </td>
+                        <td id="I2" onclick="ms(id)"> </td>
+                        <td id="J2" onclick="ms(id)"> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">3</td>
+                        <td id="A3" onclick="ms(id)"> </td>
+                        <td id="B3" onclick="ms(id)"> </td>
+                        <td id="C3" onclick="ms(id)"> </td>
+                        <td id="D3" onclick="ms(id)"> </td>
+                        <td id="E3" onclick="ms(id)"> </td>
+                        <td id="F3" onclick="ms(id)"> </td>
+                        <td id="G3" onclick="ms(id)"> </td>
+                        <td id="H3" onclick="ms(id)"> </td>
+                        <td id="I3" onclick="ms(id)"> </td>
+                        <td id="J3" onclick="ms(id)"> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">4</td>
+                        <td id="A4" onclick="ms(id)"> </td>
+                        <td id="B4" onclick="ms(id)"> </td>
+                        <td id="C4" onclick="ms(id)"> </td>
+                        <td id="D4" onclick="ms(id)"> </td>
+                        <td id="E4" onclick="ms(id)"> </td>
+                        <td id="F4" onclick="ms(id)"> </td>
+                        <td id="G4" onclick="ms(id)"> </td>
+                        <td id="H4" onclick="ms(id)"> </td>
+                        <td id="I4" onclick="ms(id)"> </td>
+                        <td id="J4" onclick="ms(id)"> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">5</td>
+                        <td id="A5" onclick="ms(id)"> </td>
+                        <td id="B5" onclick="ms(id)"> </td>
+                        <td id="C5" onclick="ms(id)"> </td>
+                        <td id="D5" onclick="ms(id)"> </td>
+                        <td id="E5" onclick="ms(id)"> </td>
+                        <td id="F5" onclick="ms(id)"> </td>
+                        <td id="G5" onclick="ms(id)"> </td>
+                        <td id="H5" onclick="ms(id)"> </td>
+                        <td id="I5" onclick="ms(id)"> </td>
+                        <td id="J5" onclick="ms(id)"> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">6</td>
+                        <td id="A6" onclick="ms(id)"> </td>
+                        <td id="B6" onclick="ms(id)"> </td>
+                        <td id="C6" onclick="ms(id)"> </td>
+                        <td id="D6" onclick="ms(id)"> </td>
+                        <td id="E6" onclick="ms(id)"> </td>
+                        <td id="F6" onclick="ms(id)"> </td>
+                        <td id="G6" onclick="ms(id)"> </td>
+                        <td id="H6" onclick="ms(id)"> </td>
+                        <td id="I6" onclick="ms(id)"> </td>
+                        <td id="J6" onclick="ms(id)"> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">7</td>
+                        <td id="A7" onclick="ms(id)"> </td>
+                        <td id="B7" onclick="ms(id)"> </td>
+                        <td id="C7" onclick="ms(id)"> </td>
+                        <td id="D7" onclick="ms(id)"> </td>
+                        <td id="E7" onclick="ms(id)"> </td>
+                        <td id="F7" onclick="ms(id)"> </td>
+                        <td id="G7" onclick="ms(id)"> </td>
+                        <td id="H7" onclick="ms(id)"> </td>
+                        <td id="I7" onclick="ms(id)"> </td>
+                        <td id="J7" onclick="ms(id)"> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">8</td>
+                        <td id="A8" onclick="ms(id)"> </td>
+                        <td id="B8" onclick="ms(id)"> </td>
+                        <td id="C8" onclick="ms(id)"> </td>
+                        <td id="D8" onclick="ms(id)"> </td>
+                        <td id="E8" onclick="ms(id)"> </td>
+                        <td id="F8" onclick="ms(id)"> </td>
+                        <td id="G8" onclick="ms(id)"> </td>
+                        <td id="H8" onclick="ms(id)"> </td>
+                        <td id="I8" onclick="ms(id)"> </td>
+                        <td id="J8" onclick="ms(id)"> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">9</td>
+                        <td id="A9" onclick="ms(id)"> </td>
+                        <td id="B9" onclick="ms(id)"> </td>
+                        <td id="C9" onclick="ms(id)"> </td>
+                        <td id="D9" onclick="ms(id)"> </td>
+                        <td id="E9" onclick="ms(id)"> </td>
+                        <td id="F9" onclick="ms(id)"> </td>
+                        <td id="G9" onclick="ms(id)"> </td>
+                        <td id="H9" onclick="ms(id)"> </td>
+                        <td id="I9" onclick="ms(id)"> </td>
+                        <td id="J9" onclick="ms(id)"> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">10</td>
+                        <td id="A10" onclick="ms(id)"> </td>
+                        <td id="B10" onclick="ms(id)"> </td>
+                        <td id="C10" onclick="ms(id)"> </td>
+                        <td id="D10" onclick="ms(id)"> </td>
+                        <td id="E10" onclick="ms(id)"> </td>
+                        <td id="F10" onclick="ms(id)"> </td>
+                        <td id="G10" onclick="ms(id)"> </td>
+                        <td id="H10" onclick="ms(id)"> </td>
+                        <td id="I10" onclick="ms(id)"> </td>
+                        <td id="J10" onclick="ms(id)"> </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td align="center">
+                <table border="1" cellpadding="1" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td> </td>
+                        <td align="center" style="width:15px">A</td>
+                        <td align="center" style="width:15px">B</td>
+                        <td align="center" style="width:15px">C</td>
+                        <td align="center" style="width:15px">D</td>
+                        <td align="center" style="width:15px">E</td>
+                        <td align="center" style="width:15px">F</td>
+                        <td align="center" style="width:15px">G</td>
+                        <td align="center" style="width:15px">H</td>
+                        <td align="center" style="width:15px">I</td>
+                        <td align="center" style="width:15px">J</td>
+                    </tr>
+                    <tr>
+                        <td align="center">1</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">2</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">3</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">4</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">5</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">6</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">7</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">8</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">9</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td align="center">10</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+        </tr>
+
+        </tbody>
+    </table>
+    <br><br>
+    <a href="#" onclick="ContinueClicked()">continue</a>
+</div>
+</body>
+</html>

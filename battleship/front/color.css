@@ -1,0 +1,77 @@
+
+.image { 
+   position: relative; 
+   width: 40%; /* for IE 6 */
+}
+
+
+#first h2 { 
+   text-align: left; 
+   position: absolute; 
+   text-align: justify;
+   top: 0px; 
+   left: 50; 
+   width: 100%; 
+}
+h2 span { 
+   color: white; 
+   font: bold 19.5px/19.5px Helvetica, Sans-Serif;
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 0px; 
+}
+h2 span.spacer {
+   padding:0 10px;
+}
+h2 {
+	padding-left: 600px;
+}
+
+
+#second h3 { 
+   text-align: left; 
+   position: absolute;
+   text-align: justify; 
+   top: 250px; 
+   left: 50; 
+   width: 100%; 
+}
+h3 span { 
+   color: white; 
+   font: bold 20.5px/20.5px Helvetica, Sans-Serif; 
+   letter-spacing:  0px;
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 0px; 
+}
+h3 span.spacer {
+   padding:0 10px;
+}
+h3 {
+	padding-left: 600px;
+}
+
+
+#third h4 { 
+   text-align: left; 
+   position: absolute; 
+   text-align: justify;
+   top: 565px; 
+   left: 50; 
+   width: 100%; 
+}
+h4 span { 
+   color: white; 
+   font: bold 20.5px/20.5px Helvetica, Sans-Serif; 
+   letter-spacing: 0px; 
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 0px; 
+}
+h4 span.spacer {
+   padding:0 10px;
+}
+h4 {
+	padding-left: 600px;
+}

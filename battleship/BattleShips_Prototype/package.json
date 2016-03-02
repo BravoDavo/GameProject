@@ -1,0 +1,14 @@
+{
+  "name": "ExpressByHandSockets",
+  "version": "0.0.1",
+  "dependencies":
+  {
+    "express": "4.13.3",
+    "body-parser": "~1.13.2",
+    "socket.io": "1.3.7",
+    "mysql":  "*",
+    "ejs": "2.3.4",
+    "enum": "*",
+    "mongodb": "~2.0"
+  }
+}
