@@ -1,0 +1,160 @@
+body {
+   /*background: linear-gradient(to bottom right, white, #bcbdc4);*/
+   background-image: url("red.jpg");
+   
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#body{
+	
+	width:960px;
+	padding:10px;
+	margin:0 auto;
+	clear:both;
+	}
+	
+
+.clear{
+clear:both;
+}
+
+
+	
+h1, ul{
+	margin:0;
+	padding:0;
+	}
+	
+#header{
+	margin-bottom:10px;
+	}
+	
+
+	
+#menu ul{
+	
+	list-style:none;
+	height:30px;
+	border-bottom:1px solid #000;
+
+}
+
+	
+
+
+#menu ul li{
+	float:left;/* all list set in line left */
+	 
+}
+
+#menu ul li a{
+	
+	display:block;
+	font-weight: bold;
+	font-size:large;
+	color:#fff; /* list colour white*/
+	text-decoration:none; /* no underline list name*/
+	padding:0px 20px; /*0 padding up and down and 20px padding left and right*/
+	line-height=30px;
+}
+
+#menu ul li a:hover, #menu ul li a.selected{
+	background:#A0A0A0;
+	color:#fff;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	
+}
+
+
+
+#content{
+	background:#f1f1f1;
+	text-align: justify;
+	width:660px;
+	float:left;
+	padding:10px;
+
+	margin:10px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	min-height:370px; /*height for some kind of text may b*/
+	
+}
+#content h1{
+font-size:x-large;
+text-shadow: 0 1px white;
+}
+#side{
+	background:#f1f1f1;
+	width:210px;
+	float:right;
+	padding:10px;
+	margin:10px;
+	border-left:1px solid #aaa;
+	text-align: center;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	min-height:370px;
+	
+}
+
+form {
+    display: inline; /*two button side by side*/
+	
+
+}
+
+ h3 {
+   
+    
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    
+    text-shadow: 0 1px white;
+   
+    @include linear-gradient(top, whiteffd, #eef2f5);
+    @include box-shadow(0 1px #f5f5f5);
+  }
+
+#footer{
+	background:#000;
+	color:#fff;
+	}
+
+
+@media screen and (max-width:959px) {
+	#body{
+        width:90%;
+		font-size:95%;
+    }
+	
+	
+	
+	#menu ul{
+	padding-left:0;
+	}
+
+	#menu ul li{
+	width:100%;
+	text-align:center;
+	}
+	
+	#content{
+	width:100%;
+	float:left;
+	margin-top:2%;
+	}
+	
+	#side{
+		width:90%;
+		font-size:95%;
+		padding-left:0;
+		width:100%;
+		float:left;
+		margin-top:2%;
+	}

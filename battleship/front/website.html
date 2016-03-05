@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+	
+<head>
+	
+	<title> Battle-Ship Game </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+	
+
+	
+	
+	function menu_highlight(menu_item){
+
+		$("#menu").find("ul").find("li > a").removeClass('selected');
+		$(menu_item).addClass("selected");
+	};
+		var how_to_play_html = "<center><u> <b> <big>START/PREPARATION</big> </b> </u></center>Place yourships on the board which is 10X10 in size. These represent the location of the ships on a battlefield. There are total of 3 ships with 2 square, 4 square and 5 square in lenght. They can be placed horizontally and vertically. Then when you are ready click start. It will take one turn at a time for every palyer. Once the ships are placed the position cannot be changed. Each player will also bein possession of a second grid of the same size. Where the first grid is their own ships, the second one (which is blank at thebeginning of the game) is a mirror of their opponent battlefield.</p><p><center><u> <b> <big>IN PLAY</big> </b> </u></center> Once it is determined who will go first, that person will pick a square at random and just select it. This represents their firing a missile directly at that square.If the opposing player has any part  in the square then it will be destroyed. Equally the attacking player will place an X on theirblank grid (the mirror of their opponents field) to show a hit. In this instance the first player will now be allowed to make anotherguess. This continues until the attacking player misses. </p> "; // Add new page HTML here.
+		var contact_html='<table width="450px">\
+			<tr>\
+			 <td valign="top">\
+			  <label for="first_name">First Name</label>\
+			 </td>\
+			 <td valign="top">\
+			  <input  type="text" name="first_name" maxlength="50" size="30">\
+			 </td>\
+			</tr>\
+			<tr>\
+			 <td valign="top"">\
+			  <label for="last_name">Last Name</label>\
+			 </td>\
+			 <td valign="top">\
+			  <input  type="text" name="last_name" maxlength="50" size="30">\
+			 </td>\
+			</tr>\
+			<tr>\
+			 <td valign="top">\
+			  <label for="email">Email Address</label>\
+			 </td>\
+			 <td valign="top">\
+			  <input  type="text" name="email" maxlength="80" size="30">\
+			 </td>\
+			</tr>\
+			<tr>\
+			 <td valign="top">\
+			  <label for="comments">Your Message</label>\
+			 </td>\
+			 <td valign="top">\
+			  <textarea  name="comments" maxlength="1000" cols="40" rows="15"></textarea>\
+			 </td>\
+			 </tr>\
+			<tr>\
+			 <td colspan="2" style="text-align:center">\
+			  <input type="submit" value="Submit">\
+			 </td>\
+			</tr>\
+			</table>\
+			</form>';
+			
+
+	//This function runs on play-instructions menu click
+	$("#play-instructions").on('click', function(e){
+		menu_highlight(this); // Updates menu selection by adding highlight as selected class to menu items
+		$("#content").html(how_to_play_html); // Add the how_to_play_html variable to the body content div #content
+		e.preventDefault(); // Stop page from reloading
+
+	});
+	
+	$("#play-contact").on('click', function(x){
+		menu_highlight(this); // Updates menu selection by adding highlight as selected class to menu items
+		$("#content").html(contact_html); // Add the contact_html variable to the body content div #content
+		x.preventDefault(); // Stop page from reloading
+
+	});
+	
+	
+
+	var home = '<h1> <center><u>About Battle ship</u></center></h1>\
+				<p> Battleship is a very popular battle game, played all over the world in different forms and with different rules.\
+				The original battleship game was played with paper and pencil, invented by Clifford Von Wickler before World War I. Back then,\
+				the game was not called Battleship but Salvo. <p><p>While people still play this battle game with a paper and pencil,\
+				it is also played as an online game. Because of its simplicity, \
+				Battleship is a great game for children of all ages. Playing the game with a computer-controlled opponent allows\
+				children to make mistakes while learning how to play the game.</p>Have FUN..!<div>\
+			<marquee behavior="alternate"><img src="move.png" style="width:230px;height:80px;"></marquee>\
+			</div>';
+	
+	
+	
+	
+	$("#home").on('click', function(e){
+		menu_highlight(this);
+		$("#content").html(home);
+		e.preventDefault();
+
+	});	
+	
+	
+	$("#home").on('click', function(x){
+		menu_highlight(this);
+		$("#content").html(home);
+		x.preventDefault();
+
+	});
+
+
+	});
+	</script>
+</head>
+
+<body>
+<!-- 	<audio autoplay loop><source src="music.mp3"></audio> 
+ -->	<div id="body">
+		<div id="header"> 
+			<div id="logo">
+			<img src="logo2.png" alt="images" style="width:685px;height:100px;">
+			</div>
+			<a href="http://www.facebook.com"><img src="facebook.png" alt="images" style="float:right;width:40px;height:40px;"></a>
+			
+			<a href="https://twitter.com/?lang=en""><img src="twiter.png" alt="images" style="float:right;width:40px;height:40px;"></a>
+			<a href="https://instagram.com/""><img src="instagram.png" alt="images" style="float:right;width:40px;height:40px;"></a>
+		</div>
+		
+		<div id="menu">
+		
+			<ul>
+				<li><a href="#" id="home" class="selected"> HOME</a></li>
+				<li><a href="#" id="play-instructions" > PLAY INSTRUCTION</a></li>
+				<li><a href="index.html"> GAME</a></li>
+				<li><a href="#" id="play-contact"> YOUR MESSAGE</a></li>
+				
+			
+				
+		</div>
+		
+		<div id="main"></div>
+			
+			<div id="content"> 
+				
+				<h1> <center><u>ABOUT BATTLE SHIP</u></center></h1>
+				<p> Battleship is a very popular battle game, played all over the world in different forms and with different rules. 
+				The original battleship game was played with paper and pencil, invented by Clifford Von Wickler before World War I. Back then, 
+				the game was not called Battleship but Salvo. <p><p>While people still play this battle game with a paper and pencil, 
+				it is also played as an online game. Because of its simplicity, 
+				Battleship is a great game for children of all ages. Playing the game with a computer-controlled opponent allows 
+				children to make mistakes while learning how to play the game.</p>Have FUN..!
+				<div>
+			
+			<marquee behavior="alternate"><img src="move.png" style="width:230px;height:80px;"></marquee>
+			</div>
+			</div>
+			<div id="side">
+				<h3><u>LOG YOUR SELF</u></h3>
+				<form method="post" action="index.html">
+					<p><input type="text" name="login" value="" placeholder="Username or Email"></p>
+					<p><input type="password" name="password" value="" placeholder="Password"></p>
+					<p class="remember_me">
+					<label>
+						<input type="checkbox" name="remember_me" id="remember_me">
+						Do Remember
+					</label>
+					</p>
+					<input type="submit" name="commit" value="Signin">
+						
+				</form>
+				<form action="signup.html"><input type="submit" value="Signup">
+				
+				</form>
+				<br>
+				<br>
+				<br>
+				<img src="up.png" alt="images" style="width:152px;height:114px;">
+			</div>
+			<div class="clear"></div>
+		<hr>	
+		<div id="footer"><marquee behavior="scroll" direction="left" scrollamount="8">Just play, Have fun, Enjoy the game...!</marquee></div>
+		
+	</div>
+</body>
+
+</html>

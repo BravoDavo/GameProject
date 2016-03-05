@@ -1,0 +1,63 @@
+/*td.GameFieldCell {width:15px; border: 1px black solid; Background:red}*/
+
+/*.GameField tr{height:15px}*/
+/*.GameField div {border:1px solid black; position: fixed; top:100px }*/
+/*Is the table, which represents the gameboard/ gamefield (both)*/
+/*.GameField {Background:white;   }*/
+
+
+.GameFieldContainer {width:680px; padding:10px; }
+
+.GameField {Background:#002266;  }
+.GameField tr{height:30px;   }
+.GameField td{width:30px; /*Background:#002266;*/  border:1px solid white }
+/*Checked Cell of Gamefield*/
+.GameFieldShipsCheckedCell {Background:black; transition: Background 0.1s;}
+.GameFieldShipsUncheckedCell {Background:#002266; transition: Background 0.1s;}
+.GameFieldShipsDamagedCell {Background: grey;
+    font-size:16px;
+    text-align: center;
+    transition: Background 0.1s;
+    -moz-transition: Background 0.1s;
+    -webkit-transition: Background 0.1s;
+    -o-transition: Background 0.1s;
+}
+.GameFieldShipsPreselectedCell{
+    Background:darkgrey;
+}
+.GameFieldShipsSelectionImpossibleCell{
+    Background:red;
+}
+
+.GameFieldAttackCheckedCell {Background:darkred;
+    transition: Background 0.1s;
+    -moz-transition: Background 0.1s;
+    -webkit-transition: Background 0.1s;
+    -o-transition: Background 0.1s;}
+.GameFieldAttackUncheckedCell {Background:#002266;
+    transition: Background 0.1s;
+    -moz-transition: Background 0.1s;
+    -webkit-transition: Background 0.1s;
+    -o-transition: Background 0.1s;}
+.GameFieldAttackSuccessCell {Background: red; font-size:16px; text-align: center;
+    transition: Background 0.1s;
+    -moz-transition: Background 0.1s;
+    -webkit-transition: Background 0.1s;
+    -o-transition: Background 0.1s;}
+.GameFieldCaption {
+    color:white
+}
+.GameFieldCaption tr{
+    color:white
+}
+.TlGreen {
+    Background:green;
+}
+.TlRed {
+    Background: darkred;
+}
+
+
+#gameControlBar {position:relative; width:670px; height:50px; border:2px dashed #333333; margin: 3px }
+#status{position: absolute; top:0px; right:10px; }
+

@@ -1,0 +1,203 @@
+
+
+body {
+    /*background: linear-gradient(to bottom right, white, #bcbdc4);*/
+    background-image: url("../img/red.jpg");
+
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#body{
+
+    width:988px;
+    padding:10px;
+    margin:0 auto;
+    clear:both;
+}
+
+
+.clear{
+    clear:both;
+}
+
+
+
+h1, ul{
+    margin:0;
+    padding:0;
+}
+
+#header{
+    margin-bottom:10px;
+}
+
+
+
+#menu ul{
+
+    list-style:none;
+    height:30px;
+    border-bottom:1px solid #000;
+
+}
+
+
+
+
+#menu ul li{
+    float:left;/* all list set in line left */
+
+}
+
+#menu ul li a{
+
+    display:block;
+    font-weight: bold;
+    font-size:large;
+    color:#fff; /* list colour white*/
+    text-decoration:none; /* no underline list name*/
+    padding-top:0px;
+    padding-bottom:0px;
+    padding-left: 20px;
+    padding-right:20px;
+    line-height:30px;
+}
+
+#menu ul li a:hover, #menu ul li a.selected{
+    background:#A0A0A0;
+    color:#fff;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+}
+
+
+
+.content{
+    Background:#f1f1f1;
+    transition-property: Background;
+    transition-duration: 0.1s ;
+    transition-timing-function: ease-out;
+    text-align: justify;
+    /*width:660px;*/
+    width:700px;
+    height:500px;
+    float:left;
+    padding:10px;
+    margin:10px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    min-height:370px; /*height for some kind of text may b*/
+}
+.contentGameDamaged{
+    Background:red;
+    transition-property: Background;
+    transition-duration: 0.1s ;
+    transition-timing-function: ease-out;
+    text-align: justify;
+    width:660px;
+    height:450px;
+    float:left;
+    padding:10px;
+    margin:10px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    min-height:370px; /*height for some kind of text may b*/
+}
+
+.HowToPlay {
+    position: absolute;
+    top:0px;
+    left:0px
+}
+
+
+.content h1{
+    font-size:x-large;
+    text-decoration: underline;
+    text-shadow: 0 1px white;
+
+}
+.side{
+    background:#f1f1f1;
+    width:200px;
+    height:500px;
+    float:right;
+    padding:10px;
+    margin:10px;
+    border-left:1px solid #aaa;
+    text-align: center;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    min-height:370px;
+}
+.side h3{text-decoration: underline}
+
+#debugDiv{text-align: left; font-size: 15px}
+
+form {
+    display: inline; /*two button side by side*/
+
+
+}
+
+h3 {
+
+
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+
+    text-shadow: 0 1px white;
+
+@include linear-gradient(top, whiteffd, #eef2f5);
+@include box-shadow(0 1px #f5f5f5);
+}
+
+#footer{
+    background:#000;
+    color:#fff;
+}
+
+
+@media screen and (max-width:959px) {
+    #body {
+        width: 90%;
+        font-size: 95%;
+    }
+
+    #menu ul {
+        padding-left: 0;
+    }
+
+    #menu ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    #content {
+        width: 100%;
+        float: left;
+        margin-top: 2%;
+    }
+
+    #side {
+        width: 90%;
+        font-size: 95%;
+        padding-left: 0;
+        width: 100%;
+        float: left;
+        margin-top: 2%;
+    }
+}
+
+.loginInfo{
+    color: #660000;
+}
+.createGameInfo{
+    color: #660000;
+}

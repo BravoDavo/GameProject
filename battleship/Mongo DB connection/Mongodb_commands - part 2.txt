@@ -1,0 +1,55 @@
+
+FIND and SEARCH
+
+db.players.find({"position":"Goalie"})
+db.players.findOne({"position":"Goalie"})
+db.players.find({"position":"Defenseman","age":21})
+db.players.find(
+    {
+        $or:[
+            {"position":"Center"},
+            {"position":"Defenseman"}
+            ]
+    }
+)
+db.players.find(
+    {"age":{$gt:30}
+  }
+)
+db.players.find(
+    {"age":{$lt:30}
+  }
+)
+
+db.players.find(
+	{"position":"Center"},
+	{"name":1,"_id":0}	
+).limit(3)
+
+db.players.find(
+	{"position":"Center"},
+	{"name":1,"_id":0}	
+).skip(3)
+
+
+
+INDEXING
+
+db.users.find(
+    {"age":{$lt:23}}
+).explain("executionStats")
+
+db.users.ensureIndex({"age":1}
+)
+db.users.getIndexes()
+db.users.dropIndex({"age":1}
+)
+
+
+AGGREGATION and GROUPS
+db.users.aggregate ( {
+    $group : {
+       _id : "$eyeColor",
+       total : {$sum : 1}
+       }
+}

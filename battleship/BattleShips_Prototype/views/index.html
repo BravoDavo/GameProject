@@ -1,0 +1,585 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title> Battle-Ship Game </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/pageStyles.css">
+    <link rel="stylesheet" href="stylesheets/gameStyles.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="javascript/Client_Com.js"></script>
+    <script src="javascript/Client_GameUIController.js"></script>
+    <script src="javascript/Client_GameController.js"></script>
+    <script src="javascript/Client_Cookies.js"></script>
+    <script src="javascript/Client_UIController.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="javascript/Client_UIController_jquerry.js"></script>
+
+    <script>
+        var navigationHomeButton;
+        var navigationGameButton;
+
+    </script>
+</head>
+
+<body onload="onload()">
+<div id="body">
+    <div id="header">
+        <div id="logo">
+            <img src="img/logo2.png" alt="images" style="width:685px;height:100px;">
+        </div>
+        <a href="http://www.facebook.com"><img src="img/facebook.png" alt="images" style="float:right;width:40px;height:40px;"></a>
+
+        <a href="https://twitter.com/?lang=en"><img src="img/twiter.png" alt="images" style="float:right;width:40px;height:40px;"></a>
+        <a href="https://instagram.com/"><img src="img/instagram.png" alt="images" style="float:right;width:40px;height:40px;"></a>
+    </div>
+
+    <div id="menu">
+
+        <ul>
+            <li><a href="#" id="navigationHomeButton"> <!--onclick="navigationClicked(id)">-->  Home </a></li>
+            <li><a href="#" id="navigationGameButton"> <!--onclick="navigationClicked(id)">--> Game </a></li>
+            <li><a href="#" id="navigationHowToButton"> <!--onclick="navigationClicked(id)">--> How to play</a></li>
+            <li><a href="#" id="navigationContactButton" > Contact us </a></li>
+            <li><a href="#" id="navigationTellFriedButton"  > Tell a friend</a></li>
+        </ul>
+    </div>
+
+    <div id="main">
+        <div id="aboutContentDiv" class="content">
+            <h1>About Battle ship</h1>
+
+            <p> Battleship is a very popular battle game, played all over the world in different forms and with
+                different rules.
+                The original battleship game was played with paper and pencil, invented by Clifford Von Wickler before
+                World War I. Back then,
+                the game was not called Battleship but Salvo.
+
+            <p>
+
+            <p>While people still play this battle game with a paper and pencil,
+                it is also played as an online game. Because of its simplicity,
+                Battleship is a great game for children of all ages. Playing the game with a computer-controlled
+                opponent allows
+                children to make mistakes while learning how to play the game.</p>Have FUN..!
+            <div>
+                <marquee behavior="alternate"><img src="img/move.png" style="width:230px;height:80px;"></marquee>
+            </div>
+        </div>
+        <!--Gamefield Content Div----->
+        <div id="GameContentDiv" class="content" style="display:none">
+            <h1> Game</h1>
+
+            <div class="GameFieldContainer">
+                <table id="GameFieldShipsTable" border="0">
+                    <tbody>
+                    <tr>
+                        <th>Your Board</th>
+                        <th>Enemies Board</th>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <table border="1" cellpadding="1" cellspacing="0" class="GameField">
+                                <!-- class="Gamefield">-->
+                                <tbody>
+                                <tr class="GameFieldCaption">
+                                    <td id="gameTurnLight"></td>
+                                    <td align="center"  style="">A</td>
+                                    <td align="center" style="">B</td>
+                                    <td align="center" style="">C</td>
+                                    <td align="center" style="">D</td>
+                                    <td align="center" style="">E</td>
+                                    <td align="center" style="">F</td>
+                                    <td align="center" style="">G</td>
+                                    <td align="center" style="">H</td>
+                                    <td align="center" style="">I</td>
+                                    <td align="center" style="">J</td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">1</td>
+                                    <td id="A1" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="B1" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="C1" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="D1" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="E1" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="F1" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="G1" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="H1" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="I1" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="J1" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">2</td>
+                                    <td id="A2" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="B2" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="C2" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="D2" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="E2" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="F2" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="G2" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="H2" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="I2" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="J2" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">3</td>
+                                    <td id="A3" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="B3" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="C3" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="D3" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="E3" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="F3" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="G3" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="H3" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="I3" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="J3" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">4</td>
+                                    <td id="A4" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="B4" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="C4" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="D4" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="E4" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="F4" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="G4" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="H4" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="I4" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="J4" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">5</td>
+                                    <td id="A5" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="B5" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="C5" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="D5" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="E5" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="F5" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="G5" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="H5" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="I5" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="J5" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">6</td>
+                                    <td id="A6" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="B6" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="C6" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="D6" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="E6" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="F6" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="G6" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="H6" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="I6" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="J6" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">7</td>
+                                    <td id="A7" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="B7" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="C7" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="D7" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="E7" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="F7" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="G7" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="H7" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="I7" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="J7" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">8</td>
+                                    <td id="A8" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="B8" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="C8" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="D8" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="E8" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="F8" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="G8" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="H8" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="I8" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="J8" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">9</td>
+                                    <td id="A9" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="B9" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="C9" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="D9" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="E9" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="F9" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="G9" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="H9" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="I9" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="J9" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">10</td>
+                                    <td id="A10" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="B10" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="C10" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="D10" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="E10" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="F10" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="G10" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="H10" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="I10" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                    <td id="J10" onclick="ms(id)" onmouseover="preselectCell(id)"
+                                        onmouseout="resetCellStyle(id)"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td align="center">
+                            <table border="1" cellpadding="1" cellspacing="0" class="GameField">
+                                <tbody>
+                                <tr class="GameFieldCaption">
+                                    <td></td>
+                                    <td align="center"  style="width:15px">A</td>
+                                    <td align="center"  style="width:15px">B</td>
+                                    <td align="center"  style="width:15px">C</td>
+                                    <td align="center"  style="width:15px">D</td>
+                                    <td align="center"  style="width:15px">E</td>
+                                    <td align="center"  style="width:15px">F</td>
+                                    <td align="center"  style="width:15px">G</td>
+                                    <td align="center"  style="width:15px">H</td>
+                                    <td align="center"  style="width:15px">I</td>
+                                    <td align="center"  style="width:15px">J</td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption" >1</td>
+                                    <td id="XA1" onclick="as(id)"></td>
+                                    <td id="XB1" onclick="as(id)"></td>
+                                    <td id="XC1" onclick="as(id)"></td>
+                                    <td id="XD1" onclick="as(id)"></td>
+                                    <td id="XE1" onclick="as(id)"></td>
+                                    <td id="XF1" onclick="as(id)"></td>
+                                    <td id="XG1" onclick="as(id)"></td>
+                                    <td id="XH1" onclick="as(id)"></td>
+                                    <td id="XI1" onclick="as(id)"></td>
+                                    <td id="XJ1" onclick="as(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">2</td>
+                                    <td id="XA2" onclick="as(id)"></td>
+                                    <td id="XB2" onclick="as(id)"></td>
+                                    <td id="XC2" onclick="as(id)"></td>
+                                    <td id="XD2" onclick="as(id)"></td>
+                                    <td id="XE2" onclick="as(id)"></td>
+                                    <td id="XF2" onclick="as(id)"></td>
+                                    <td id="XG2" onclick="as(id)"></td>
+                                    <td id="XH2" onclick="as(id)"></td>
+                                    <td id="XI2" onclick="as(id)"></td>
+                                    <td id="XJ2" onclick="as(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">3</td>
+                                    <td id="XA3" onclick="as(id)"></td>
+                                    <td id="XB3" onclick="as(id)"></td>
+                                    <td id="XC3" onclick="as(id)"></td>
+                                    <td id="XD3" onclick="as(id)"></td>
+                                    <td id="XE3" onclick="as(id)"></td>
+                                    <td id="XF3" onclick="as(id)"></td>
+                                    <td id="XG3" onclick="as(id)"></td>
+                                    <td id="XH3" onclick="as(id)"></td>
+                                    <td id="XI3" onclick="as(id)"></td>
+                                    <td id="XJ3" onclick="as(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">4</td>
+                                    <td id="XA4" onclick="as(id)"></td>
+                                    <td id="XB4" onclick="as(id)"></td>
+                                    <td id="XC4" onclick="as(id)"></td>
+                                    <td id="XD4" onclick="as(id)"></td>
+                                    <td id="XE4" onclick="as(id)"></td>
+                                    <td id="XF4" onclick="as(id)"></td>
+                                    <td id="XG4" onclick="as(id)"></td>
+                                    <td id="XH4" onclick="as(id)"></td>
+                                    <td id="XI4" onclick="as(id)"></td>
+                                    <td id="XJ4" onclick="as(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">5</td>
+                                    <td id="XA5" onclick="as(id)"></td>
+                                    <td id="XB5" onclick="as(id)"></td>
+                                    <td id="XC5" onclick="as(id)"></td>
+                                    <td id="XD5" onclick="as(id)"></td>
+                                    <td id="XE5" onclick="as(id)"></td>
+                                    <td id="XF5" onclick="as(id)"></td>
+                                    <td id="XG5" onclick="as(id)"></td>
+                                    <td id="XH5" onclick="as(id)"></td>
+                                    <td id="XI5" onclick="as(id)"></td>
+                                    <td id="XJ5" onclick="as(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">6</td>
+                                    <td id="XA6" onclick="as(id)"></td>
+                                    <td id="XB6" onclick="as(id)"></td>
+                                    <td id="XC6" onclick="as(id)"></td>
+                                    <td id="XD6" onclick="as(id)"></td>
+                                    <td id="XE6" onclick="as(id)"></td>
+                                    <td id="XF6" onclick="as(id)"></td>
+                                    <td id="XG6" onclick="as(id)"></td>
+                                    <td id="XH6" onclick="as(id)"></td>
+                                    <td id="XI6" onclick="as(id)"></td>
+                                    <td id="XJ6" onclick="as(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">7</td>
+                                    <td id="XA7" onclick="as(id)"></td>
+                                    <td id="XB7" onclick="as(id)"></td>
+                                    <td id="XC7" onclick="as(id)"></td>
+                                    <td id="XD7" onclick="as(id)"></td>
+                                    <td id="XE7" onclick="as(id)"></td>
+                                    <td id="XF7" onclick="as(id)"></td>
+                                    <td id="XG7" onclick="as(id)"></td>
+                                    <td id="XH7" onclick="as(id)"></td>
+                                    <td id="XI7" onclick="as(id)"></td>
+                                    <td id="XJ7" onclick="as(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">8</td>
+                                    <td id="XA8" onclick="as(id)"></td>
+                                    <td id="XB8" onclick="as(id)"></td>
+                                    <td id="XC8" onclick="as(id)"></td>
+                                    <td id="XD8" onclick="as(id)"></td>
+                                    <td id="XE8" onclick="as(id)"></td>
+                                    <td id="XF8" onclick="as(id)"></td>
+                                    <td id="XG8" onclick="as(id)"></td>
+                                    <td id="XH8" onclick="as(id)"></td>
+                                    <td id="XI8" onclick="as(id)"></td>
+                                    <td id="XJ8" onclick="as(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">9</td>
+                                    <td id="XA9" onclick="as(id)"></td>
+                                    <td id="XB9" onclick="as(id)"></td>
+                                    <td id="XC9" onclick="as(id)"></td>
+                                    <td id="XD9" onclick="as(id)"></td>
+                                    <td id="XE9" onclick="as(id)"></td>
+                                    <td id="XF9" onclick="as(id)"></td>
+                                    <td id="XG9" onclick="as(id)"></td>
+                                    <td id="XH9" onclick="as(id)"></td>
+                                    <td id="XI9" onclick="as(id)"></td>
+                                    <td id="XJ9" onclick="as(id)"></td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="GameFieldCaption">10</td>
+                                    <td id="XA10" onclick="as(id)"></td>
+                                    <td id="XB10" onclick="as(id)"></td>
+                                    <td id="XC10" onclick="as(id)"></td>
+                                    <td id="XD10" onclick="as(id)"></td>
+                                    <td id="XE10" onclick="as(id)"></td>
+                                    <td id="XF10" onclick="as(id)"></td>
+                                    <td id="XG10" onclick="as(id)"></td>
+                                    <td id="XH10" onclick="as(id)"></td>
+                                    <td id="XI10" onclick="as(id)"></td>
+                                    <td id="XJ10" onclick="as(id)"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+                <div id="gameControlBar"><a href="#" onclick="ContinueClicked()">continue</a> <span
+                        id="status">Status: </span>
+                    <br><a href="#" onclick="quitGame()">quit game</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!--<div id="HowToContentDiv" class="content" style="display:none">
+            <img src="img/bg1.jpg" alt="HTML5 Icon" width="95%" height="">
+        </div>-->
+        <div id="otherContentDiv" class="content" style="display:none"></div>
+    </div>
+
+
+    <div id="loginSidebar" class="side">
+        <h3>Login for Game </h3>
+
+        <form method="post" action="/signin">
+            <p><input type="text" name="login" value="" placeholder="Username or Email"></p>
+            <p><input type="password" name="password" value="" placeholder="Password"></p>
+            <p class="remember_me">
+                <label>
+                    <input type="checkbox" name="remember_me" id="remember_me">
+                    Remember me
+                </label>
+            </p>
+            <input type="submit" name="commit" value="signin" >
+
+       </form>
+        <a href="#" id="signupButton"> <!--onclick="navigationClicked(id)"--> Signup</a>
+
+
+        <br>
+        <br>
+        <br>
+        <img src="img/up.png" alt="images" style="width:152px;height:114px;">
+        <br>
+        <div id="loginInfoBox" class="loginInfo"></div>
+    </div>
+    <!--Sidebar while Game-->
+    <div id="gameSidebar" class="side" style="display:none">
+        <h3>Select ships type</h3>
+        <b>Choose orientation:</b>
+        <p><input type="radio" name="shipsOrientation" id="radioHorizontal" value="horizontal" checked="true"><label for="radioHorizontal">horizontal</label></p>
+        <p><input type="radio" name="shipsOrientation" id="radioVertical" value="vertical" ><label for="radioVertical">vertical</label></p>
+        <hr>
+        <b>Choose Type</b>
+
+        <p><input type="radio" name="shipsType" id="radioCarrier"  checked="true"><label for="radioCarrier">Airplane Carrier</label><span id="shipsCounterCarrier"></span></p>
+        <p><input type="radio" name="shipsType" id="radioBattleShip"  ><label for="radioBattleShip">Battleship</label><span id="shipsCounterBattleship"></span></p>
+        <p><input type="radio" name="shipsType" id="radioCruiser" ><label for="radioCruiser">Cruiser</label><span id="shipsCounterCruiser"></span></p>
+        <p><input type="radio" name="shipsType" id="radioDestroyer" ><label for="radioDestroyer">Destroyer</label><span id="shipsCounterDestroyer"></span></p>
+        <hr>
+        <a href="#" onclick="resetGameFieldShips()">reset placed ships</a>
+        <hr>
+        <!--<b>Session Info</b>-->
+        <div id="debugDiv"></div>
+
+
+
+    </div>
+    <div id="signupSidebar" class="side" style="display:none">
+        <h3>Please sign up</h3>
+        <form action="/signupuser" method="post">
+            First name: <input type="text" name="fname"><br>
+            Last name: <input type="text" name="lname"><br>
+            username: <input type="text" name="username"><br>
+            password: <input type="password" name="password"><br>
+            <input type="submit" value="Submit" onclick="signupClicked">
+        </form>
+    </div>
+    <div id="createGameSidebar" class="side" style="display:none">
+        <h3>Welcome <i><span id="usernameWelcomming"></span></i></h3>
+        <b>create a new game</b>
+        <br>
+        <a href="#" onclick="startNewGame()">go!</a>
+        <hr>
+        <b>join existing game</b>
+        <div id="gameSessionsList" class="sessionsList">
+            <ul>
+                <li>No open session at the moment </li>
+             </ul>
+        </div>
+        <hr>
+        <a href="/" id="logoutButton"> <!-- onclick="navigationClicked(id)"--> Logout</a>
+        <br>
+        <br>
+        <br>
+        <img src="img/up.png" alt="images" style="width:152px;height:114px;"><br>
+        <div id="createGameInfoBox" class="createGameInfo"></div>
+    </div>
+
+
+    <div class="clear"></div>
+    <hr>
+    <div id="footer"><marquee behavior="scroll" direction="left" scrollamount="8">Just play, Have fun, Enjoy the game...!</marquee></div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+        var socket  = io.connect();
+        socket.on('connect', function(data){
+            document.getElementById("status").innerHTML="Status: Websocket connected.";
+           })
+        socket.on('ConnectionRefused', function(data){
+            document.getElementById("messagebox").innerHTML=data.message;
+            socket.disconnect();
+            document.getElementById("status").innerHTML="Status: Websocket disconnected().";
+        })
+        socket.on('status-update', function(data) {
+            if(data.message=="wait"){
+                document.getElementById("status").innerHTML="OK. Wait for your opponent to get ready";
+            }else if(data.message=="attack"){
+                document.
+            }
+        })
+
+
+    function ms(id){
+        document.getElementById(id).syle+="; color:grey";
+    }
+
+
+    function sendStatusUpdate(){
+        socket.emit('status-update',{status: "blabla"});
+    }
+
+    function sendFieldUpdate(){
+        socket.emit('field-update',{field: "lalala"});
+    }
+
+</script>
+
+</head>
+<body>
+<h1>Game</h1>
+<h2 id="subtitle">please place your ships on the upper gamefield (click on a square activates it)</h2>
+<div id="status">Status: </div>
+<h2>Messages:</h2>
+<div id="messagebox" style="width:40%; height:200px; border:2px solid black" ></div>
+<div id="GameField">
+<table id="GameFieldShipsTable">
+    <tr>
+        <td id="00" onclick="ms(id)"></td><td id="01" onclick="ms(id)"></td><td id="02" onclick="ms(id)"></td>
+    </tr>
+    <tr>
+        <td id="10" onclick="ms(id)"></td><td id="11" onclick="ms(id)"></td><td id="12" onclick="ms(id)"></td>
+    </tr>
+    <tr>
+        <td id="20" onclick="ms(id)"></td><td id="21" onclick="ms(id)"></td><td id="22" onclick="ms(id)"></td>
+    </tr>
+
+</table>
+
+
+</div>
+
+
+
+
+<br><br>
+<a href="#" onclick="sendStatusUpdate()">send status update</a><br>
+<a href="#" onclick="sendFieldUpdate()">send Field update</a>
+</body>
+</html>

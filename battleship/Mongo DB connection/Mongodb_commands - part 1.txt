@@ -1,0 +1,34 @@
+database is made up of collection
+
+collection is group of similar data
+
+use hockey => switching and creating hockey 
+DropDatabase() => delete current database
+
+db.players.insert() => player is collection, insert documents
+db.players.insert([])
+show collections
+db.players.find()
+db.players.findOne()
+
+db.players.remove({"_id" : ObjectId("564cc0e4a464931bf061c15e")})
+
+db.players.update({"_id" : ObjectId("564cc0e4a464931bf061c15d")},
+    {
+"       position" : "Right and left Wing",
+	    "id" : 8466393,
+	    "weight" : 205,
+	    "height" : "6' 1\"",
+	    "imageUrl" : "http://2.cdn.nhle.com/photos/mugs/8466393.jpg",
+	    "birthplace" : "Laval, QC, CAN",
+	    "age" : 35,
+	    "name" : "Pascal Dupuis",
+	    "birthdate" : "April 07, 1979",
+	    "number" : 9
+}
+)
+
+db.players.drop
+
+
+)	
